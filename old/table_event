@@ -1,0 +1,24 @@
+DROP DATABASE IF EXISTS event_git;
+CREATE DATABASE event_git;
+
+DROP TABLE IF EXISTS event;
+
+CREATE TABLE event (
+	id int not null,
+	type varchar(50) not null,
+	actor_id int not null,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE pushevent(
+	commits count(10) NOT NULL,
+)INHERITS (event);
+
+CREATE TABLE actor(
+	id int not null,
+	login varchar(150) not null,
+	PRIMARY KEY (id)
+);
+
+ 
+SELECT * FROM event;
