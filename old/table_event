@@ -1,24 +1,33 @@
-DROP DATABASE IF EXISTS event_git;
-CREATE DATABASE event_git;
+DROP DATABASE IF EXISTS github;
+CREATE DATABASE github;
 
-DROP TABLE IF EXISTS event;
+\connect github;
 
 CREATE TABLE event (
 	id int not null,
 	type varchar(50) not null,
+	ref VARCHAR(200),
 	actor_id int not null,
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	FOREIGN KEY(actor_id) REFERENCES ACTOR(id)
 );
 
-CREATE TABLE pushevent(
-	commits count(10) NOT NULL,
-)INHERITS (event);
 
 CREATE TABLE actor(
-	id int not null,
-	login varchar(150) not null,
+	id INT not null,
+	login VARCHAR(150) not null,
+	url VARCHAR(200),
+	avatar_url VARCHAR(200),
 	PRIMARY KEY (id)
 );
 
- 
+
+CREATE TABLE push_event(
+		sizes INT NOT NULL
+)INHERITS (event);
+
+CREATE TABLE create_event(
+		description VARCHAR(200) NOT NULL
+)INHERITS (event);
+
 SELECT * FROM event;
