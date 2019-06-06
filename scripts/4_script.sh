@@ -1,1 +1,0 @@
-ALTER SYSTEM SET port TO '1234'
