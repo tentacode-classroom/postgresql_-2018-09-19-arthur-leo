@@ -21,7 +21,7 @@ function addJsons(array $buffer)
     $statement->execute($buffer);
 }
 
-$jsonFilePath = sprintf('%s/../resources/import_github.json', __DIR__);
+$jsonFilePath = sprintf('%s/../../ressources/2018-09-19-15.json', __DIR__);
 
 $handle = fopen($jsonFilePath, 'r');
 

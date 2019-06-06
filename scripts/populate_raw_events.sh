@@ -1,4 +1,3 @@
-psql --username=super_admin -c "DROP TABLE IF EXISTS event_raw; CREATE TABLE event_raw (json_data JSONB NOT NULL);"
+psql --username=super_admin -d github -c "DROP TABLE IF EXISTS event_raw" -c "CREATE TABLE event_raw (json_data JSONB NOT NULL);"
 php ./php/insert_data.php
-php ./php/test.php
-pslq --username=super_admin -c "SELECT COUNT(*) FROM event_raw;"
+psql --username=super_admin -d github -c "SELECT COUNT(*) FROM event_raw;"
