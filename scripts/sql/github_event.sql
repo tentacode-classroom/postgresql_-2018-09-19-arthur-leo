@@ -28,9 +28,21 @@ CREATE TABLE PUSH_EVENT(
 	branch_name VARCHAR(200) NOT NULL
 ) INHERITS(EVENT);
 
-DROP TABLE IF EXISTS CREATE_EVENT;
+DROP TABLE IF EXISTSf q CREATE_EVENT;
 CREATE TABLE CREATE_EVENT(
 	description VARCHAR (200) NOT NULL,
 	ref_types VARCHAR(200) NOT NULL,
 	ref VARCHAR (200) NOT NULL
 ) INHERITS(EVENT);
+
+
+INSERT INTO PUSH_EVENT(
+		commit_count,
+		branch_name
+)
+	SELECT json_data
+	json_data -> commit_count,
+	json_data -> branch_name
+	FROM event_raw
+	WHERE json_data
+	type -> "PUSH_EVENT"
